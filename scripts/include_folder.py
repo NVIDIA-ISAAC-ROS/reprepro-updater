@@ -110,7 +110,7 @@ if options.commit:
         # invalidate and clear all first
 
         # # only invalidate dependencies if invalidation is asked for
-        # for changes in valid_changes:
+        for changes in valid_changes:
         #     if options.invalidate:
         #         if changes.content['Architecture'] != 'source':
         #             if not invalidate_dependent(options.repo_path,
@@ -119,12 +119,12 @@ if options.commit:
         #                                         options.package):
         #                 sys.exit(1)
 
-        #     # always invalidate this package we're about to upload the new one
-        #     if not invalidate_package(options.repo_path,
-        #                               changes.content['Distribution'],
-        #                               changes.content['Architecture'],
-        #                               options.package):
-        #         sys.exit(1)
+            # always invalidate this package we're about to upload the new one
+            if not invalidate_package(options.repo_path,
+                                      changes.content['Distribution'],
+                                      changes.content['Architecture'],
+                                      options.package):
+                sys.exit(1)
 
         # # delete_unreferenced before uploading if invalidating
         # if not delete_unreferenced(options.repo_path, options.commit):
