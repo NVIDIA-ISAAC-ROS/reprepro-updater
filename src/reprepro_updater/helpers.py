@@ -57,7 +57,9 @@ def try_run_command(command):
 
 
 def delete_unreferenced(repo_dir, commit):
-    command_argument = 'deleteunreferenced' if commit else 'dumpunreferenced'
+    #TODO hcrosland: restore this
+    #command_argument = 'deleteunreferenced' if commit else 'dumpunreferenced'
+    command_argument = 'dumpunreferenced'
     cleanup_command = ['reprepro', '-v', '-b', repo_dir, command_argument]
     print("running", cleanup_command, file=sys.stderr)
     return try_run_command(cleanup_command)
